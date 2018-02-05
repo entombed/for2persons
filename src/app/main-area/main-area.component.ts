@@ -50,7 +50,7 @@ export class MainAreaComponent implements OnInit {
     }
   }
 
-  getRandomInt(min=0, max=this.cardsCount) {
+  getRandomInt(min:number = 0, max:number = this.cardsCount) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
