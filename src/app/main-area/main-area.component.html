@@ -1,16 +1,19 @@
+<p-sidebar [(visible)]="display" styleClass="ui-sidebar-sm">
 <div class="ui-g">
-  <div class="ui-md-12">
+  <div class="ui-md-12 count-block">
     <div class="ui-inputgroup">
       <button pButton type="button" icon="fa-minus" (click)="decrimet()"></button>
-      <input #inputField class="ui-md-1" type="text" pKeyFilter="int" (keyup.enter)="showItemsCount(cardsArray, inputField.value)" [(ngModel)]="inputText">
+      <input #inputField class="input-count-cards" type="text" pKeyFilter="int" (keyup.enter)="showItemsCount(cardsArray, inputField.value)" [(ngModel)]="inputText">
       <button pButton type="button" icon="fa-plus" (click)="incrimet()"></button>
       <button pButton type="button" class="ui-button-success" label="Enter" (click)="showItemsCount(cardsArray, inputField.value)"></button>
     </div>
   </div>
-  <div class="ui-md-12">
+  <div class="ui-md-12 resort-button">
     <button pButton type="button" label="Resort cards" (click)="showItemsCount(cardsArray)" icon="fa-random" iconPos="left"></button>
   </div>
 </div>
+</p-sidebar>
+<button pButton type="button" (click)="display = true" icon="fa-arrow-right"></button>
 
 <div class="ui-g">
   <div class="ui-md-12">
