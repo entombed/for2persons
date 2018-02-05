@@ -1,0 +1,23 @@
+<div class="ui-g">
+  <div class="ui-md-12">
+    <div class="ui-inputgroup">
+      <button pButton type="button" icon="fa-minus" (click)="decrimet()"></button>
+      <input #inputField class="ui-md-1" type="text" pKeyFilter="int" (keyup.enter)="showItemsCount(cardsArray, inputField.value)" [(ngModel)]="inputText">
+      <button pButton type="button" icon="fa-plus" (click)="incrimet()"></button>
+      <button pButton type="button" class="ui-button-success" label="Enter" (click)="showItemsCount(cardsArray, inputField.value)"></button>
+    </div>
+  </div>
+  <div class="ui-md-12">
+    <button pButton type="button" label="Resort cards" (click)="showItemsCount(cardsArray)" icon="fa-random" iconPos="left"></button>
+  </div>
+</div>
+
+<div class="ui-g">
+  <div class="ui-md-12">
+    <ul class="img-block list-inline text-center">
+      <li class="list-inline-item" *ngFor="let card of spliceArray">
+        <img class="img-card img-thumbnail" src="./assets/images/{{ card }}.png"/>
+      </li>
+    </ul>
+  </div>
+</div>
