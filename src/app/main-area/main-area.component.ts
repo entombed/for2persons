@@ -121,6 +121,8 @@ export class MainAreaComponent implements OnInit {
     let getLength = this.spliceArray.length;
     if (data > this.cardsCount) {
       this.inputText = this.cardsCount;
+    } else if (data < 0) {
+      this.inputText = 1;
     }
   }
 }
