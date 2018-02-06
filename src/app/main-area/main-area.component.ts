@@ -15,14 +15,17 @@ export class MainAreaComponent implements OnInit {
     }
     this.showItemsCount(this.cardsArray);
   }
-  cardsCount:number = 50;
+  cardsCount:number = 10;
   cardsArray:any[] = [];
   spliceArray:any[] = [];
+  tempArray:any[] = [];
   inputText:number = 1;
+  blockAddOneCard:boolean = false;
+  blockDelOneCard:boolean = false;
 
   shuffle(array:any[]) {
     let max = array.length;
-    let itemTemp;
+    let tempItem;
     let item;
 
     // While there remain elements to shuffle…
@@ -30,9 +33,9 @@ export class MainAreaComponent implements OnInit {
       // Pick a remaining element…
       item = Math.floor(Math.random() * max--);
       // And swap it with the current element.
-      itemTemp = array[max];
+      tempItem = array[max];
       array[max] = array[item];
-      array[item] = itemTemp;
+      array[item] = tempItem;
     }
     this.cardsArray = array;
   }
@@ -56,7 +59,7 @@ export class MainAreaComponent implements OnInit {
   showItemsCount(array:any[], num:number = 3){
     this.spliceArray = [];
     let item;
-    var tempArray = [];
+    this.tempArray = [];
     if (num > this.cardsCount) {
       num = this.cardsCount;
     }
@@ -66,13 +69,58 @@ export class MainAreaComponent implements OnInit {
     this.shuffle(array)
     for (let i = 0; i < num; i++) {
       item = this.getRandomInt();
-      if (tempArray.indexOf(item) == -1) {
-        tempArray.push(item);
+      if (this.tempArray.indexOf(item) == -1) {
+        this.tempArray.push(item);
         this.spliceArray.push(array[item]);
       } else {
         i--;
       }
     }
-    this.inputText = num
+    this.inputText = num;
+    this.checkButtonStatus();
+  }
+
+  addOneCard(array:any[]): void {
+    if (this.spliceArray.length == this.cardsCount){
+      return;
+    } else {
+      let item;
+      item = this.getRandomInt();
+      console.log(item);
+      console.dir(this.tempArray);
+      while (!(this.tempArray.indexOf(item) == -1)) {
+        item = this.getRandomInt();
+      }
+      this.tempArray.push(item);
+      this.spliceArray.push(array[item]);
+    }
+    this.checkButtonStatus();
+  }
+  delOneCard(){
+    this.tempArray.pop();
+    this.spliceArray.pop();
+    this.checkButtonStatus();
+  }
+
+  checkButtonStatus(){
+    let getLength = this.spliceArray.length;
+    console.log(getLength + ' ' + this.cardsCount);
+    if (getLength == this.cardsCount){
+      this.blockAddOneCard = true;
+      this.blockDelOneCard = false;
+    } else if (getLength < this.cardsCount && getLength > 0) {
+      this.blockAddOneCard = false;
+      this.blockDelOneCard = false;
+    } else if (getLength == 0) {
+      this.blockDelOneCard = true;
+      this.blockAddOneCard = false;
+    }
+  }
+  checkInputCount(data){
+    console.log(data);
+    let getLength = this.spliceArray.length;
+    if (data > this.cardsCount) {
+      this.inputText = this.cardsCount;
+    }
   }
 }

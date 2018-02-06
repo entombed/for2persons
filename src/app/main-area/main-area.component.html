@@ -1,15 +1,22 @@
 <p-sidebar [(visible)]="display" styleClass="ui-sidebar-sm">
 <div class="ui-g">
   <div class="ui-md-12 count-block">
+    <h2>Card count = {{cardsCount}}</h2>
     <div class="ui-inputgroup">
       <button pButton type="button" icon="fa-minus" (click)="decrimet()"></button>
-      <input #inputField class="input-count-cards" type="text" pKeyFilter="int" (keyup.enter)="showItemsCount(cardsArray, inputField.value)" [(ngModel)]="inputText">
+      <input #inputField class="input-count-cards" type="text" pKeyFilter="int" (keyup.enter)="showItemsCount(cardsArray, inputField.value)" (keyup)="checkInputCount(inputField.value)" [(ngModel)]="inputText">
       <button pButton type="button" icon="fa-plus" (click)="incrimet()"></button>
-      <button pButton type="button" class="ui-button-success" label="Enter" (click)="showItemsCount(cardsArray, inputField.value)"></button>
+      <button pButton type="button" class="ui-button-success" label="Enter" (click)="showItemsCount(cardsArray, inputField.value)" ></button>
     </div>
   </div>
   <div class="ui-md-12 resort-button">
     <button pButton type="button" label="Resort cards" (click)="showItemsCount(cardsArray)" icon="fa-random" iconPos="left"></button>
+  </div>
+  <div class="ui-md-12 add-card-button">
+    <button pButton type="button" label="add one card" (click)="addOneCard(cardsArray)" icon="fa-plus" iconPos="left" [disabled]="blockAddOneCard"></button>
+  </div>
+  <div class="ui-md-12 add-card-button">
+    <button pButton type="button" label="del one cards" (click)="delOneCard()" icon="fa-minus" iconPos="left" [disabled]="blockDelOneCard"></button>
   </div>
 </div>
 </p-sidebar>
