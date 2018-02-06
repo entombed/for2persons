@@ -13,7 +13,6 @@ export class MainAreaComponent implements OnInit {
     for (let i = 1; i <= this.cardsCount; i++) {
       this.cardsArray.push(i);
     }
-    //this.shuffle(this.cardsArray);
     this.showItemsCount(this.cardsArray);
   }
   cardsCount:number = 50;
@@ -60,11 +59,9 @@ export class MainAreaComponent implements OnInit {
     var tempArray = [];
     if (num > this.cardsCount) {
       num = this.cardsCount;
-      this.inputText = this.cardsCount;
     }
-    if (num <= 0) {
+    else if (num <= 0) {
       num = 1;
-      this.inputText = 1;
     }
     this.shuffle(array)
     for (let i = 0; i < num; i++) {
@@ -76,5 +73,6 @@ export class MainAreaComponent implements OnInit {
         i--;
       }
     }
+    this.inputText = num
   }
 }
