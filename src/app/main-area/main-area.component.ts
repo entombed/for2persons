@@ -19,7 +19,7 @@ export class MainAreaComponent implements OnInit {
   cardsArray:any[] = [];
   spliceArray:any[] = [];
   tempArray:any[] = [];
-  inputText:number = 1;
+  inputText:number = 3;
   blockAddOneCard:boolean = false;
   blockDelOneCard:boolean = false;
 
@@ -56,7 +56,7 @@ export class MainAreaComponent implements OnInit {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
-  showItemsCount(array:any[], num:number = 3){
+  showItemsCount(array:any[], num:number = this.inputText){
     this.spliceArray = [];
     let item;
     this.tempArray = [];
