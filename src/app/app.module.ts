@@ -9,12 +9,15 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { MainAreaComponent } from './main-area/main-area.component';
+import { CardDeckService } from './data/card-deck.service';
+import { ShowCardsComponent } from './show-cards/show-cards.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainAreaComponent
+    MainAreaComponent,
+    ShowCardsComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,7 @@ import { MainAreaComponent } from './main-area/main-area.component';
     SidebarModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [CardDeckService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

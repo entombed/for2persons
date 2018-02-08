@@ -1,13 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { GetRandomItemService } from '../services/get-random-item.service';
+import { CardDeckService } from '../data/card-deck.service';
+import { ShuffleService } from '../services/shuffle.service';
 
 @Component({
   selector: 'app-main-area',
   templateUrl: './main-area.component.html',
-  styleUrls: ['./main-area.component.css']
+  styleUrls: ['./main-area.component.css'],
+  providers: [
+    GetRandomItemService,
+    CardDeckService,
+    ShuffleService
+  ]
 })
 export class MainAreaComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public _getRandomItem: GetRandomItemService,
+    public _cardDeck: CardDeckService,
+    public _shuffle: ShuffleService,
+  ) { }
 
   ngOnInit() {
     for (let i = 1; i <= this.cardsCount; i++) {
@@ -15,60 +27,59 @@ export class MainAreaComponent implements OnInit {
     }
     this.showItemsCount(this.cardsArray);
   }
-  cardsCount:number = 10;
+
+  // @Output() sendSpliceArray = new EventEmitter();
+
+  cardsCount = this._cardDeck.cardsCount;
+
   cardsArray:any[] = [];
   spliceArray:any[] = [];
   tempArray:any[] = [];
+
   inputText:number = 3;
-  blockAddOneCard:boolean = false;
-  blockDelOneCard:boolean = false;
 
-  shuffle(array:any[]) {
-    let max = array.length;
-    let tempItem;
-    let item;
+  buttons = {
+    plus: {
+      status: false,
+      label: "add one card"
+    },
+    minus: {
+      status: false,
+      label: "del one card"
+    },
+  };
 
-    // While there remain elements to shuffle…
-    while (max) {
-      // Pick a remaining element…
-      item = Math.floor(Math.random() * max--);
-      // And swap it with the current element.
-      tempItem = array[max];
-      array[max] = array[item];
-      array[item] = tempItem;
+  changeInputValue(action){
+    let lengthCardsArray = this.cardsArray.length;
+    let currentText = this.inputText;
+    switch (action) {
+      case 'incriment':
+        if (this.inputText < lengthCardsArray) {
+          this.inputText++;
+        }
+      break;
+      case 'decriment':
+        if (this.inputText > 1) {
+          this.inputText--;
+        }
+      break;
     }
-    this.cardsArray = array;
-  }
-
-  incrimet(){
-    if (this.inputText < this.cardsCount) {
-      this.inputText++;
-    }
-  }
-
-  decrimet(){
-    if (this.inputText > 1) {
-      this.inputText--;
-    }
-  }
-
-  getRandomInt(min:number = 0, max:number = this.cardsCount) {
-    return Math.floor(Math.random() * (max - min)) + min;
   }
 
   showItemsCount(array:any[], num:number = this.inputText){
     this.spliceArray = [];
     let item;
     this.tempArray = [];
-    if (num > this.cardsCount) {
-      num = this.cardsCount;
+    let lengthCardsArray = this.cardsArray.length;
+    if (num > lengthCardsArray) {
+      num = lengthCardsArray;
     }
     else if (num <= 0) {
       num = 1;
     }
-    this.shuffle(array)
+    this.cardsArray = this._shuffle.mixIt(array);
     for (let i = 0; i < num; i++) {
-      item = this.getRandomInt();
+      item = this._getRandomItem.getItem(0, this.cardsArray.length);
       if (this.tempArray.indexOf(item) == -1) {
         this.tempArray.push(item);
         this.spliceArray.push(array[item]);
@@ -78,18 +89,19 @@ export class MainAreaComponent implements OnInit {
     }
     this.inputText = num;
     this.checkButtonStatus();
+    // this.sendSpliceArray.emit(this.spliceArray);
   }
 
-  addOneCard(array:any[]): void {
-    if (this.spliceArray.length == this.cardsCount){
+  addOneCard(array:any[]) {
+    let lengthCardsArray = this.cardsArray.length;
+    let lengthSpliceArray = this.spliceArray.length;
+    if (lengthSpliceArray == lengthCardsArray){
       return;
     } else {
       let item;
-      item = this.getRandomInt();
-      console.log(item);
-      console.dir(this.tempArray);
+      item = this._getRandomItem.getItem(0, lengthSpliceArray);
       while (!(this.tempArray.indexOf(item) == -1)) {
-        item = this.getRandomInt();
+        item = this._getRandomItem.getItem(0, lengthCardsArray);
       }
       this.tempArray.push(item);
       this.spliceArray.push(array[item]);
@@ -103,25 +115,25 @@ export class MainAreaComponent implements OnInit {
   }
 
   checkButtonStatus(){
-    let getLength = this.spliceArray.length;
-    console.log(getLength + ' ' + this.cardsCount);
-    if (getLength == this.cardsCount){
-      this.blockAddOneCard = true;
-      this.blockDelOneCard = false;
-    } else if (getLength < this.cardsCount && getLength > 0) {
-      this.blockAddOneCard = false;
-      this.blockDelOneCard = false;
-    } else if (getLength == 0) {
-      this.blockDelOneCard = true;
-      this.blockAddOneCard = false;
+    let lengthSpliceArray = this.spliceArray.length;
+    let lengthCardsArray = this.cardsArray.length;
+    if (lengthSpliceArray == lengthCardsArray){
+      this.buttons.plus.status = true;
+      this.buttons.minus.status = false;
+    } else if (lengthSpliceArray == 0) {
+      this.buttons.minus.status = true;
+      this.buttons.plus.status = false;
+    } else {
+      this.buttons.plus.status = false;
+      this.buttons.minus.status = false;
     }
   }
-  checkInputCount(data){
-    console.log(data);
-    let getLength = this.spliceArray.length;
-    if (data > this.cardsCount) {
-      this.inputText = this.cardsCount;
-    } else if (data < 0) {
+  checkInputCount(value){
+    let lengthCardsArray = this.cardsArray.length;
+    let lengthSpliceArray = this.spliceArray.length;
+    if (value > lengthCardsArray) {
+      this.inputText = lengthCardsArray;
+    } else if (value < 0) {
       this.inputText = 1;
     }
   }

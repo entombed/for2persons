@@ -1,24 +1,20 @@
 <p-sidebar [(visible)]="display" styleClass="ui-sidebar-sm">
-<div class="ui-g">
-  <div class="ui-md-12 count-block">
-    <h2>Card count = {{cardsCount}}</h2>
-    <div class="ui-inputgroup">
-      <button pButton type="button" icon="fa-minus" (click)="decrimet()"></button>
-      <input #inputField class="input-count-cards" type="text" pKeyFilter="int" (keyup.enter)="showItemsCount(cardsArray, inputField.value)" (keyup)="checkInputCount(inputField.value)" [(ngModel)]="inputText">
-      <button pButton type="button" icon="fa-plus" (click)="incrimet()"></button>
-      <button pButton type="button" class="ui-button-success" label="Enter" (click)="showItemsCount(cardsArray, inputField.value)" ></button>
+  <div class="ui-g">
+    <div class="ui-md-12 count-block">
+      <h4>Card count = {{cardsCount}}</h4>
+      <div class="ui-inputgroup">
+        <button pButton type="button" icon="fa-minus" (click)="changeInputValue('decriment')"></button>
+        <input #inputField class="input-count-cards" type="text" pKeyFilter="int" (keyup.enter)="showItemsCount(cardsArray, inputField.value)" (keyup)="checkInputCount(inputField.value)" [(ngModel)]="inputText">
+        <button pButton type="button" icon="fa-plus" (click)="changeInputValue('incriment')"></button>
+        <button pButton type="button" class="ui-button-success" label="Enter" (click)="showItemsCount(cardsArray, inputField.value)" ></button>
+      </div>
+    </div>
+    <div class="ui-md-12 drive-button">
+      <button pButton type="button" label="Resort cards" (click)="showItemsCount(cardsArray)" icon="fa-random" iconPos="left"></button>
+      <button pButton type="button" label={{buttons.plus.label}} (click)="addOneCard(cardsArray)" icon="fa-plus" iconPos="left" [disabled]="buttons.plus.status"></button>
+      <button pButton type="button" label={{buttons.minus.label}} (click)="delOneCard()" icon="fa-minus" iconPos="left" [disabled]="buttons.minus.status"></button>
     </div>
   </div>
-  <div class="ui-md-12 resort-button">
-    <button pButton type="button" label="Resort cards" (click)="showItemsCount(cardsArray)" icon="fa-random" iconPos="left"></button>
-  </div>
-  <div class="ui-md-12 add-card-button">
-    <button pButton type="button" label="add one card" (click)="addOneCard(cardsArray)" icon="fa-plus" iconPos="left" [disabled]="blockAddOneCard"></button>
-  </div>
-  <div class="ui-md-12 add-card-button">
-    <button pButton type="button" label="del one cards" (click)="delOneCard()" icon="fa-minus" iconPos="left" [disabled]="blockDelOneCard"></button>
-  </div>
-</div>
 </p-sidebar>
 <button pButton type="button" (click)="display = true" icon="fa-arrow-right"></button>
 
@@ -31,3 +27,5 @@
     </ul>
   </div>
 </div>
+
+<app-show-cards></app-show-cards>
