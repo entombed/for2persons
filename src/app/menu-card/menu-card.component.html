@@ -1,4 +1,4 @@
-<p-sidebar [(visible)]="sideBar" styleClass="ui-sidebar-sm">
+<p-sidebar [(visible)]="showSideBar" styleClass="ui-sidebar-sm">
   <div class="ui-g">
     <div class="ui-md-12 count-block">
       <h4>Card count = {{cardsCount}}</h4>
@@ -16,6 +16,3 @@
     </div>
   </div>
 </p-sidebar>
-<button pButton type="button" (click)="showSideBar()" icon="fa-arrow-right"></button>
-<!-- <app-menu-card [showSideBar]="sideBarStatus"></app-menu-card> -->
-<app-show-cards [carsArray]="spliceArray"></app-show-cards>

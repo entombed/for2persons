@@ -11,13 +11,16 @@ import { AppComponent } from './app.component';
 import { MainAreaComponent } from './main-area/main-area.component';
 import { CardDeckService } from './data/card-deck.service';
 import { ShowCardsComponent } from './show-cards/show-cards.component';
-
+import { GetRandomItemService } from './services/get-random-item.service'
+import { ShuffleService } from './services/shuffle.service';
+import { MenuCardComponent } from './menu-card/menu-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainAreaComponent,
     ShowCardsComponent,
+    MenuCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,11 @@ import { ShowCardsComponent } from './show-cards/show-cards.component';
     SidebarModule,
     BrowserAnimationsModule
   ],
-  providers: [CardDeckService],
+  providers: [
+    CardDeckService,
+    GetRandomItemService,
+    ShuffleService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

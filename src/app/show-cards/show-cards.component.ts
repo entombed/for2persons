@@ -1,23 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CardDeckService } from '../data/card-deck.service';
-import { Input } from '@angular/core/src/metadata/directives';
+//import { Input } from '@angular/core/src/metadata/directives';
 
 @Component({
   selector: 'app-show-cards',
   templateUrl: './show-cards.component.html',
-  styleUrls: ['./show-cards.component.css'],
-  providers: [
-    CardDeckService
-  ]
+  styleUrls: ['./show-cards.component.css']
 })
 export class ShowCardsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public _cardDeck: CardDeckService
+  ) { }
 
   ngOnInit() {
   }
 
-  catchSpliceArray(event){
-    console.log(event);
-  }
+  @Input() carsArray;
+
 }
