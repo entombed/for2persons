@@ -22,27 +22,27 @@ export class CardDeckService {
     }
   }
 
-  showItemsCount(array:any[], num:number){
-    this.spliceArray = [];
-    let item;
-    this.tempArray = [];
-    let lengthCardsArray = this.cardsArray.length;
-    if (num > lengthCardsArray) {
-      num = lengthCardsArray;
-    }
-    else if (num <= 0) {
-      num = 1;
-    }
-    this.cardsArray = this._shuffle.mixIt(array);
-    for (let i = 0; i < num; i++) {
-      item = this._getRandomItem.getItem(0, this.cardsArray.length);
-      if (this.tempArray.indexOf(item) == -1) {
-        this.tempArray.push(item);
-        this.spliceArray.push(array[item]);
-      } else {
-        i--;
-      }
-    }
-  }
+  // showItemsCount(array:any[], num:number){
+  //   this.spliceArray = [];
+  //   let item;
+  //   this.tempArray = [];
+  //   let lengthCardsArray = this.cardsArray.length;
+  //   if (num > lengthCardsArray) {
+  //     num = lengthCardsArray;
+  //   }
+  //   else if (num <= 0) {
+  //     num = 1;
+  //   }
+  //   this.cardsArray = this._shuffle.mixIt(array);
+  //   for (let i = 0; i < num; i++) {
+  //     item = this._getRandomItem.getItem(0, this.cardsArray.length);
+  //     if (this.tempArray.indexOf(item) == -1) {
+  //       this.tempArray.push(item);
+  //       this.spliceArray.push(array[item]);
+  //     } else {
+  //       i--;
+  //     }
+  //   }
+  // }
 
 }

@@ -59,7 +59,7 @@ export class MenuCardComponent implements OnInit {
   }
 
   showItemsCount(array:any[], num:number = this.inputText){
-    this._cardDeck.showItemsCount(this.cardsArray, num);
+    // this._cardDeck.showItemsCount(this.cardsArray, num);
     this.spliceArray = this._cardDeck.spliceArray;
     this.tempArray = this._cardDeck.tempArray;
     this.inputText = num;
