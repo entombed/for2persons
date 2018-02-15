@@ -1,10 +1,10 @@
 
-<div class="ui-g">
-  <div class="ui-md-12">
-    <ul class="img-block list-inline text-center">
-      <li class="list-inline-item" *ngFor="let card of carsArray">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 flex-container">
+      <div class="flex-item" *ngFor="let card of carsArray">
         <img class="img-card img-thumbnail" src="./assets/images/{{ card }}.png"/>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </div>

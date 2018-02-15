@@ -1,10 +1,6 @@
 .input-count-cards {
   width: 100px;
-  padding: 0 5px;
-}
-
-.count-block {
-  margin-bottom: 15px;
+  padding: 0 1em;
 }
 
 .count-block .ui-button-success {
@@ -13,5 +9,5 @@
 
 .drive-button button {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 0.5em;
 }
