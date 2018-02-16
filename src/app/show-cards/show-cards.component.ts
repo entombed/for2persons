@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CardDeckService } from '../data/card-deck.service';
-//import { Input } from '@angular/core/src/metadata/directives';
 
 @Component({
   selector: 'app-show-cards',
@@ -16,6 +15,5 @@ export class ShowCardsComponent implements OnInit {
   ngOnInit() {
   }
 
-  @Input() carsArray;
-
+  @Input() getArray;
 }

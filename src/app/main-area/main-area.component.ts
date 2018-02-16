@@ -20,7 +20,7 @@ export class MainAreaComponent implements OnInit {
 
   ngOnInit() {
     this._cardDeck.pushArray();
-    this.showItemsCount(this.cardsArray);
+    this.showItemsCount(this.startData);
   }
 
   cardsArray:any[] = this._cardDeck.cardsArray;
@@ -28,6 +28,11 @@ export class MainAreaComponent implements OnInit {
   tempArray:any[] = [];
   sideBar:boolean = false;
   inputText:number = 3;
+
+  startData = {
+    array: this.cardsArray,
+    num: this.inputText
+  }
 
   buttons = {
     plus: {
@@ -53,7 +58,9 @@ export class MainAreaComponent implements OnInit {
     this.inputText = this._changeInputValue.changeInputValue(data);
   }
 
-  showItemsCount(array:any[], num:number = this.inputText){
+  showItemsCount(event){
+    let array = event.array;
+    let num = event.num;
     this.spliceArray = [];
     let item;
     this.tempArray = [];
@@ -121,5 +128,9 @@ export class MainAreaComponent implements OnInit {
       value: value
     }
     this.inputText = this._changeInputValue.checkInputCount(data);
+  }
+
+  pullStatusBar(status){
+    this.sideBar = status;
   }
 }

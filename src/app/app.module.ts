@@ -15,14 +15,14 @@ import { ShowCardsComponent } from './show-cards/show-cards.component';
 import { GetRandomItemService } from './services/get-random-item.service'
 import { ShuffleService } from './services/shuffle.service';
 import { ChangeInputValueService } from './services/change-input-value.service';
-// import { MenuCardComponent } from './menu-card/menu-card.component';
+import { MenuCardComponent } from './menu-card/menu-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainAreaComponent,
     ShowCardsComponent,
-    // MenuCardComponent,
+    MenuCardComponent,
   ],
   imports: [
     BrowserModule,
