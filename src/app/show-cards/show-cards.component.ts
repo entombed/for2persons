@@ -15,5 +15,5 @@ export class ShowCardsComponent implements OnInit {
   ngOnInit() {
   }
 
-  @Input() getArray;
+  @Input() pullArray;
 }

@@ -5,11 +5,10 @@
   [pullInputText]="inputText"
   [pullCardsArray]="cardsArray"
   [pullSpliceArray]="spliceArray"
-  (pushStatusBar)="pullStatusBar($event)" 
-  (pushAddButton)="addOneCard()" 
-  (pushDelButton)="delOneCard()"
+  (pushStatusBar)="hideSideBar($event)" 
+  (pushChangeOneCard)="changeOneCard($event)" 
   (pushChangeInputValue)="changeInputValue($event)"
   (pushShowItemsCount)="showItemsCount($event)"
   (pushCheckInputCount)="checkInputCount($event)">
 </app-menu-card>
-<app-show-cards [getArray]="spliceArray"></app-show-cards>
+<app-show-cards [pullArray]="spliceArray"></app-show-cards>

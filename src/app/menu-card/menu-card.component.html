@@ -16,8 +16,8 @@
     </div> 
     <div class="ui-md-12 drive-button">
       <button pButton type="button" label="Resort cards" (click)="showItemsCount(pullCardsArray)" icon="fa-random" iconPos="left"></button>
-      <button pButton type="button" label={{pullButtons.plus.label}} (click)="addCard()" icon="fa-plus" iconPos="left" [disabled]="pullButtons.plus.status"></button>
-      <button pButton type="button" label={{pullButtons.minus.label}} (click)="delCard()" icon="fa-minus" iconPos="left" [disabled]="pullButtons.minus.status"></button>
+      <button pButton type="button" label={{pullButtons.plus.label}} (click)="changeOneCard('incriment')" icon="fa-plus" iconPos="left" [disabled]="pullButtons.plus.status"></button>
+      <button pButton type="button" label={{pullButtons.minus.label}} (click)="changeOneCard('decriment')" icon="fa-minus" iconPos="left" [disabled]="pullButtons.minus.status"></button>
     </div>
   </div>
 </p-sidebar>

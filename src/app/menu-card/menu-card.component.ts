@@ -19,8 +19,7 @@ export class MenuCardComponent implements OnInit {
   @Input() pullSpliceArray;
 
   @Output() pushStatusBar = new EventEmitter<boolean>();
-  @Output() pushAddButton = new EventEmitter<any>();
-  @Output() pushDelButton = new EventEmitter<any>();
+  @Output() pushChangeOneCard = new EventEmitter<any>();
   @Output() pushChangeInputValue = new EventEmitter<any>();
   @Output() pushShowItemsCount = new EventEmitter<any>();
   @Output() pushCheckInputCount = new EventEmitter<any>();
@@ -28,11 +27,8 @@ export class MenuCardComponent implements OnInit {
   setHidden(){
     this.pushStatusBar.emit(false);
   }
-  addCard(){
-    this.pushAddButton.emit();
-  }
-  delCard(){
-    this.pushDelButton.emit();
+  changeOneCard(action){
+    this.pushChangeOneCard.emit(action);
   }
   changeInputValue(action){
     this.pushChangeInputValue.emit(action);

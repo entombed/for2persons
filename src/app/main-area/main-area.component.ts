@@ -49,6 +49,10 @@ export class MainAreaComponent implements OnInit {
     this.sideBar = true;
   }
 
+  hideSideBar(status){
+    this.sideBar = status;
+  }
+
   changeInputValue(action){
     let data = {
       length: this.cardsArray.length,
@@ -130,7 +134,11 @@ export class MainAreaComponent implements OnInit {
     this.inputText = this._changeInputValue.checkInputCount(data);
   }
 
-  pullStatusBar(status){
-    this.sideBar = status;
+  changeOneCard(action){
+    if (action == 'incriment') {
+      this.addOneCard();
+    } else if (action == 'decriment') {
+      this.delOneCard();
+    }
   }
 }
