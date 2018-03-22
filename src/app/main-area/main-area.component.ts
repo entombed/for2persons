@@ -27,6 +27,7 @@ export class MainAreaComponent implements OnInit {
   spliceArray:any[] = [];
   tempArray:any[] = [];
   inputText:number = 3;
+  animationState: string = 'start';
 
   startData = {
     array: this.cardsArray,
@@ -54,6 +55,7 @@ export class MainAreaComponent implements OnInit {
   }
 
   showItemsCount(event){
+    this.animationState = 'finish';
     let array = event.array;
     let num = event.num;
     this.spliceArray = [];

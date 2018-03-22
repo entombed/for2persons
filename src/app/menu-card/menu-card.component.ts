@@ -22,10 +22,10 @@ export class MenuCardComponent implements OnInit {
   @Output() pushShowItemsCount = new EventEmitter<any>();
   @Output() pushCheckInputCount = new EventEmitter<any>();
 
-  pullStatusSideBar = false;
+  displaySideBar = false;
 
   showSideBar(){
-    this.pullStatusSideBar = true;
+    this.displaySideBar = true;
   }
 
   changeOneCard(action){

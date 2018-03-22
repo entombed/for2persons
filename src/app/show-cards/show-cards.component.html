@@ -1,6 +1,6 @@
 <div class="ui-g">
   <div class="ui-md-12 flex-container">
-    <div class="flex-item" *ngFor="let card of pullArray">
+    <div class="flex-item" *ngFor="let card of pullArray" [@myAwesomeAnimation]="pullAnimationState">
       <img class="img-card img-thumbnail" src="./assets/images/{{ card }}.png"/>
     </div>
   </div>
