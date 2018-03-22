@@ -26,7 +26,6 @@ export class MainAreaComponent implements OnInit {
   cardsArray:any[] = this._cardDeck.cardsArray;
   spliceArray:any[] = [];
   tempArray:any[] = [];
-  sideBar:boolean = false;
   inputText:number = 3;
 
   startData = {
@@ -44,14 +43,6 @@ export class MainAreaComponent implements OnInit {
       label: "del one card"
     },
   };
-
-  showSideBar(){
-    this.sideBar = true;
-  }
-
-  hideSideBar(status){
-    this.sideBar = status;
-  }
 
   changeInputValue(action){
     let data = {

@@ -12,21 +12,22 @@ export class MenuCardComponent implements OnInit {
   ngOnInit() {
   }
 
-  @Input() pullStatusSideBar;
   @Input() pullInputText;
   @Input() pullButtons;
   @Input() pullCardsArray;
   @Input() pullSpliceArray;
 
-  @Output() pushStatusBar = new EventEmitter<boolean>();
   @Output() pushChangeOneCard = new EventEmitter<any>();
   @Output() pushChangeInputValue = new EventEmitter<any>();
   @Output() pushShowItemsCount = new EventEmitter<any>();
   @Output() pushCheckInputCount = new EventEmitter<any>();
 
-  setHidden(){
-    this.pushStatusBar.emit(false);
+  pullStatusSideBar = false;
+
+  showSideBar(){
+    this.pullStatusSideBar = true;
   }
+
   changeOneCard(action){
     this.pushChangeOneCard.emit(action);
   }

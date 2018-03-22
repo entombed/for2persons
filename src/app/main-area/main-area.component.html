@@ -1,11 +1,10 @@
-<button pButton type="button" (click)="showSideBar()" icon="fa-arrow-right"></button>
+<button pButton type="button" (click)="menu.showSideBar()" icon="fa-arrow-right"></button>
 <app-menu-card 
-  [pullStatusSideBar]="sideBar" 
+  #menu
   [pullButtons]="buttons" 
   [pullInputText]="inputText"
   [pullCardsArray]="cardsArray"
   [pullSpliceArray]="spliceArray"
-  (pushStatusBar)="hideSideBar($event)" 
   (pushChangeOneCard)="changeOneCard($event)" 
   (pushChangeInputValue)="changeInputValue($event)"
   (pushShowItemsCount)="showItemsCount($event)"
