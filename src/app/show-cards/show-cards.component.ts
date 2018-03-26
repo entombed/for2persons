@@ -13,7 +13,7 @@ import {
   templateUrl: './show-cards.component.html',
   styleUrls: ['./show-cards.component.css'],
   animations: [ 
-    trigger ('dropDownCard', [
+    trigger ('animateCard', [
       transition('void => *', [
         style({transform: 'translateY(-100%)', opacity:0}), animate('800ms cubic-bezier(.65, 1.95, .03, .32)'),
         // style({transform: 'translateY(0)', opacity:0}), animate('800ms')
