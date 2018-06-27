@@ -8,16 +8,16 @@
         <dd class="col-md-3">{{pullCardsArray.length - pullSpliceArray.length}}</dd>
       </dl>
       <div class="ui-inputgroup">
-        <button pButton type="button" icon="fa-minus" (click)="changeInputValue('decriment')"></button>
+        <button pButton type="button" icon="fa fa-minus" (click)="changeInputValue('decriment')"></button>
         <input #inputField class="input-count-cards" type="text" pKeyFilter="int" (keyup.enter)="showItemsCount(pullCardsArray, inputField.value)" (keyup)="checkInputCount(inputField.value)" [(ngModel)]="pullInputText">
-        <button pButton type="button" icon="fa-plus" (click)="changeInputValue('incriment')"></button>
+        <button pButton type="button" icon="fa fa-plus" (click)="changeInputValue('incriment')"></button>
         <button pButton type="button" class="ui-button-success" label="Enter" (click)="showItemsCount(pullCardsArray, inputField.value)" ></button>
       </div>
     </div> 
     <div class="ui-md-12 drive-button">
-      <button pButton type="button" label="Resort cards" (click)="showItemsCount(pullCardsArray)" icon="fa-random" iconPos="left"></button>
-      <button pButton type="button" label={{pullButtons.plus.label}} (click)="changeOneCard('incriment')" icon="fa-plus" iconPos="left" [disabled]="pullButtons.plus.status"></button>
-      <button pButton type="button" label={{pullButtons.minus.label}} (click)="changeOneCard('decriment')" icon="fa-minus" iconPos="left" [disabled]="pullButtons.minus.status"></button>
+      <button pButton type="button" label="Resort cards" (click)="showItemsCount(pullCardsArray)" icon="fa fa-random" iconPos="left"></button>
+      <button pButton type="button" label={{pullButtons.plus.label}} (click)="changeOneCard('incriment')" icon="fa fa-plus" iconPos="left" [disabled]="pullButtons.plus.status"></button>
+      <button pButton type="button" label={{pullButtons.minus.label}} (click)="changeOneCard('decriment')" icon="fa fa-minus" iconPos="left" [disabled]="pullButtons.minus.status"></button>
     </div>
   </div>
 </p-sidebar>
